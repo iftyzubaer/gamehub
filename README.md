@@ -40,7 +40,3 @@ A modern game discovery platform built with Next.js, featuring real-time search 
 - Portfolio: [iftyzubaer.vercel.app](https://iftyzubaer.vercel.app)
 - GitHub: [@iftyzubaer](https://github.com/iftyzubaer)
 - LinkedIn: [iftyzubaer](https://linkedin.com/in/iftyzubaer)
-
-## License
-
-MIT
