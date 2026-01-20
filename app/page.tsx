@@ -3,22 +3,34 @@ import GameCard from './components/GameCard'
 import SearchBar from './components/SearchBar'
 
 async function getPopularGames() {
-  const apiKey = process.env.NEXT_PUBLIC_RAWG_API_KEY
-  const res = await fetch(
-    `https://api.rawg.io/api/games?key=${apiKey}&page_size=12&ordering=-rating`,
-    { next: { revalidate: 3600 } }
-  )
-  
-  if (!res.ok) {
-    throw new Error('Failed to fetch games')
+  try {
+    const apiKey = process.env.NEXT_PUBLIC_RAWG_API_KEY
+    
+    if (!apiKey) {
+      console.error('RAWG API key is missing')
+      return { results: [] }
+    }
+    
+    const res = await fetch(
+      `https://api.rawg.io/api/games?key=${apiKey}&page_size=12&ordering=-rating`,
+      { next: { revalidate: 3600 } }
+    )
+    
+    if (!res.ok) {
+      console.error('Failed to fetch games:', res.status, res.statusText)
+      return { results: [] }
+    }
+    
+    return res.json()
+  } catch (error) {
+    console.error('Error fetching games:', error)
+    return { results: [] }
   }
-  
-  return res.json()
 }
 
 export default async function Home() {
   const data = await getPopularGames()
-  const games = data.results
+  const games = data.results || []
 
   return (
     <main className="min-h-screen bg-black text-white">
@@ -63,11 +75,19 @@ export default async function Home() {
             <span className="text-red-600">Top Rated</span> Games
           </h2>
           
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
-            {games.map((game: any) => (
-              <GameCard key={game.id} game={game} />
-            ))}
-          </div>
+          {games.length > 0 ? (
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+              {games.map((game: any) => (
+                <GameCard key={game.id} game={game} />
+              ))}
+            </div>
+          ) : (
+            <div className="text-center py-12">
+              <p className="text-gray-500 text-lg">
+                Unable to load games at the moment. Please try again later.
+              </p>
+            </div>
+          )}
         </div>
       </div>
     </main>

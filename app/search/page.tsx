@@ -19,7 +19,7 @@ async function searchGames(query: string) {
 export default async function SearchPage({
   searchParams,
 }: {
-  searchParams: Promise<{ q: string }>
+  readonly searchParams: Promise<{ readonly q: string }>
 }) {
   const params = await searchParams
   const query = params.q || ''
