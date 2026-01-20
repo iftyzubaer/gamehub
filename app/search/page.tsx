@@ -1,4 +1,3 @@
-import { FaGamepad } from 'react-icons/fa'
 import GameCard from '../components/GameCard'
 import SearchBar from '../components/SearchBar'
 import Link from 'next/link'
@@ -22,7 +21,6 @@ export default async function SearchPage({
 }: {
   searchParams: Promise<{ q: string }>
 }) {
-  // Await the searchParams (Next.js 15 requirement)
   const params = await searchParams
   const query = params.q || ''
   
@@ -43,28 +41,19 @@ export default async function SearchPage({
   const games = data.results
 
   return (
-    <main className="min-h-screen bg-black text-white p-8">
-      <div className="h-1 w-full bg-gradient-to-r from-red-600 via-orange-500 to-red-600 mb-8"></div>
-      
-      <div className="max-w-7xl mx-auto">
-        {/* Header */}
-        <Link href="/" className="flex items-center justify-center gap-4 mb-8 hover:opacity-80 transition-opacity">
-          <FaGamepad className="text-5xl text-red-600" />
-          <h1 className="text-5xl font-black uppercase tracking-tight">
-            <span className="text-white">Game</span>
-            <span className="text-red-600">Hub</span>
-          </h1>
-        </Link>
-        
+    <main className="min-h-screen bg-black text-white">
+      <div className="max-w-7xl mx-auto px-4 py-12">
         {/* Search Bar */}
-        <SearchBar />
+        <div className="mb-12">
+          <SearchBar />
+        </div>
         
         {/* Results */}
-        <div className="mb-8">
-          <h2 className="text-2xl font-black uppercase tracking-tight mb-2">
+        <div>
+          <h2 className="text-3xl font-black uppercase tracking-tight mb-2">
             Search Results for: <span className="text-red-600">"{query}"</span>
           </h2>
-          <p className="text-gray-500 mb-6">Found {games.length} games</p>
+          <p className="text-gray-500 mb-8">Found {games.length} games</p>
           
           {games.length > 0 ? (
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
@@ -74,8 +63,8 @@ export default async function SearchPage({
             </div>
           ) : (
             <div className="text-center py-12">
-              <p className="text-gray-500 text-xl">No games found for "{query}"</p>
-              <Link href="/" className="text-red-600 hover:text-orange-500 transition-colors mt-4 inline-block">
+              <p className="text-gray-500 text-xl mb-4">No games found for "{query}"</p>
+              <Link href="/" className="text-red-600 hover:text-orange-500 transition-colors">
                 ← Back to home
               </Link>
             </div>

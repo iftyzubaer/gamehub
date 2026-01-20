@@ -1,4 +1,4 @@
-import { FaGamepad, FaTrophy } from 'react-icons/fa'
+import { FaTrophy } from 'react-icons/fa'
 import GameCard from './components/GameCard'
 import SearchBar from './components/SearchBar'
 
@@ -21,51 +21,45 @@ export default async function Home() {
   const games = data.results
 
   return (
-    <main className="min-h-screen bg-black text-white p-8">
-      <div className="h-1 w-full bg-gradient-to-r from-red-600 via-orange-500 to-red-600 mb-8"></div>
-      
-      <div className="max-w-7xl mx-auto">
-        {/* Header */}
-        <div className="flex items-center justify-center gap-4 mb-4">
-          <div className="relative">
-            <FaGamepad className="text-7xl text-red-600" />
-            <FaTrophy className="absolute -top-2 -right-2 text-2xl text-orange-500 animate-bounce" />
+    <main className="min-h-screen bg-black text-white">
+      {/* Hero Section */}
+      <div className="bg-gradient-to-b from-red-900/20 to-black border-b border-gray-800">
+        <div className="max-w-7xl mx-auto px-4 py-16 text-center">
+          <div className="flex items-center justify-center gap-3 mb-4">
+            <FaTrophy className="text-4xl text-orange-500 animate-bounce" />
           </div>
-          <h1 className="text-7xl font-black uppercase tracking-tight">
-            <span className="text-white">Game</span>
-            <span className="text-red-600">Hub</span>
+          <h1 className="text-5xl md:text-6xl font-black uppercase tracking-tight mb-4">
+            <span className="text-red-600">Dominate.</span> <span className="text-white">Discover.</span> <span className="text-red-600">Play.</span>
           </h1>
+          <p className="text-gray-400 text-lg mb-8">
+            Find your competitive edge across all platforms
+          </p>
+          
+          {/* Search Bar */}
+          <SearchBar />
         </div>
-        
-        <p className="text-center text-gray-400 text-xl mb-3 uppercase tracking-widest font-bold">
-          Dominate. Discover. Play.
-        </p>
-        <p className="text-center text-gray-500 text-sm mb-12">
-          Find your competitive edge across all platforms
-        </p>
-        
-        {/* Search Bar Component */}
-        <SearchBar />
-        
-        {/* Stats Bar */}
-        <div className="grid grid-cols-3 gap-4 max-w-3xl mx-auto mb-12">
-          <div className="bg-gray-900 border border-gray-800 rounded-lg p-4 text-center hover:border-red-600 transition-colors">
-            <p className="text-3xl font-black text-red-600">10K+</p>
-            <p className="text-xs text-gray-500 uppercase tracking-wide">Games</p>
+      </div>
+      
+      {/* Stats Bar */}
+      <div className="max-w-7xl mx-auto px-4 py-12">
+        <div className="grid grid-cols-3 gap-4 max-w-3xl mx-auto mb-16">
+          <div className="bg-gray-900 border border-gray-800 rounded-lg p-6 text-center hover:border-red-600 transition-colors">
+            <p className="text-4xl font-black text-red-600">10K+</p>
+            <p className="text-sm text-gray-500 uppercase tracking-wide mt-2">Games</p>
           </div>
-          <div className="bg-gray-900 border border-gray-800 rounded-lg p-4 text-center hover:border-orange-500 transition-colors">
-            <p className="text-3xl font-black text-orange-500">500+</p>
-            <p className="text-xs text-gray-500 uppercase tracking-wide">Genres</p>
+          <div className="bg-gray-900 border border-gray-800 rounded-lg p-6 text-center hover:border-orange-500 transition-colors">
+            <p className="text-4xl font-black text-orange-500">500+</p>
+            <p className="text-sm text-gray-500 uppercase tracking-wide mt-2">Genres</p>
           </div>
-          <div className="bg-gray-900 border border-gray-800 rounded-lg p-4 text-center hover:border-red-600 transition-colors">
-            <p className="text-3xl font-black text-red-600">24/7</p>
-            <p className="text-xs text-gray-500 uppercase tracking-wide">Updated</p>
+          <div className="bg-gray-900 border border-gray-800 rounded-lg p-6 text-center hover:border-red-600 transition-colors">
+            <p className="text-4xl font-black text-red-600">24/7</p>
+            <p className="text-sm text-gray-500 uppercase tracking-wide mt-2">Updated</p>
           </div>
         </div>
         
         {/* Top Rated Games */}
-        <div className="mb-8">
-          <h2 className="text-3xl font-black uppercase tracking-tight mb-6 text-center">
+        <div>
+          <h2 className="text-3xl font-black uppercase tracking-tight mb-8 text-center">
             <span className="text-red-600">Top Rated</span> Games
           </h2>
           
