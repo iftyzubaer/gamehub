@@ -32,7 +32,7 @@ A modern game discovery platform built with Next.js, featuring real-time search 
 
 ## Live Demo
 
-[View Live Demo](gamehub-iftyzubaer.vercel.app)
+[View Live Demo](https://gamehub-iftyzubaer.vercel.app)
 
 ## Author
 
